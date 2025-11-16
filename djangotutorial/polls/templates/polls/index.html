@@ -1,0 +1,29 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+<head>
+  <!-- CSS faylını tanıtmaq -->
+    <link rel="stylesheet" href="{% static 'polls/style.css' %}">
+    <meta charset="utf-8">
+    <title>Polls Index</title>
+
+    
+</head>
+
+<body>
+
+<h1>Sorğular</h1>
+
+{% if latest_question_list %}
+    <ul>
+    {% for question in latest_question_list %}
+        <li><a href="{% url 'polls:detail' question.id %}">{{ question.question_text }}</a></li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>Heç bir sual yoxdur.</p>
+{% endif %}
+
+</body>
+</html>
